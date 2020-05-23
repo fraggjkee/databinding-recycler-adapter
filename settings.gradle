@@ -1,0 +1,3 @@
+rootProject.name='DataBinding Adapter'
+include ':sample'
+include ':library'

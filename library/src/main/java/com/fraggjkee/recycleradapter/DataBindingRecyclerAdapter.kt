@@ -4,43 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
-private class DiffCallback : DiffUtil.ItemCallback<RecyclerItem>() {
-
-    override fun areItemsTheSame(
-        oldItem: RecyclerItem,
-        newItem: RecyclerItem
-    ): Boolean {
-        val oldData = oldItem.data
-        val newData = newItem.data
-        // Use appropriate comparator's method if both items implement the interface
-        // and rely on the plain 'equals' otherwise
-        return if (oldData is RecyclerItemComparator
-            && newData is RecyclerItemComparator
-        ) {
-            oldData.isSameItem(newData)
-        } else oldData == newData
-    }
-
-    override fun areContentsTheSame(
-        oldItem: RecyclerItem,
-        newItem: RecyclerItem
-    ): Boolean {
-        val oldData = oldItem.data
-        val newData = newItem.data
-        return if (oldData is RecyclerItemComparator
-            && newData is RecyclerItemComparator
-        ) {
-            oldData.isSameContent(newData)
-        } else oldData == newData
-    }
-}
-
-class DataBindingRecyclerAdapter internal constructor() :
-    ListAdapter<RecyclerItem, BindingViewHolder>(DiffCallback()) {
-
+class DataBindingRecyclerAdapter : ListAdapter<RecyclerItem, BindingViewHolder>(
+    DiffCallback()
+) {
     override fun getItemViewType(position: Int): Int {
         return getItem(position).layoutId
     }
@@ -58,7 +26,29 @@ class DataBindingRecyclerAdapter internal constructor() :
         holder: BindingViewHolder,
         position: Int
     ) {
-        getItem(position).bind(holder.binding)
-        holder.binding.executePendingBindings()
+        holder.run {
+            getItem(position).bind(binding)
+            if (binding.hasPendingBindings()) {
+                binding.executePendingBindings()
+            }
+        }
     }
+}
+
+private fun RecyclerItem.bind(binding: ViewDataBinding) {
+    val isVariableFound = binding.setVariable(variableId, data)
+    if (isVariableFound.not()) {
+        throw IllegalStateException(
+            buildErrorMessage(variableId, binding)
+        )
+    }
+}
+
+private fun buildErrorMessage(
+    variableId: Int,
+    binding: ViewDataBinding
+): String {
+    val variableName = DataBindingUtil.convertBrIdToString(variableId)
+    val className = binding::class.simpleName
+    return "Failed to find variable='$variableName' in the following databinding layout: $className"
 }

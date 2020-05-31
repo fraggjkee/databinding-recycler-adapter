@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 @BindingAdapter("items")
 fun setRecyclerViewItems(
     recyclerView: RecyclerView,
-    items: List<com.fraggjkee.recycleradapter.RecyclerItem>?
+    items: List<RecyclerItem>?
 ) {
     var adapter = (recyclerView.adapter as? DataBindingRecyclerAdapter)
     if (adapter == null) {

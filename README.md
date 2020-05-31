@@ -16,7 +16,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```gradle
 dependencies {
-    implementation "com.github.fraggjkee:databinding-recycler-adapter:v0.1"
+    implementation "com.github.fraggjkee:databinding-recycler-adapter:0.2"
 }
 ```
 License

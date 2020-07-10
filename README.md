@@ -19,6 +19,14 @@ dependencies {
     implementation "com.github.fraggjkee:databinding-recycler-adapter:0.2"
 }
 ```
+
+# Sample project structure
+`/sample` folder contains the following examples:
+- **[Simple](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/simple)**: a minimal functional implementation of a static list. Single view type is shared across all items.
+- **[Simple (Multi Type)](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/simple_multitype)**: similar to **Simple** sample but additionally demonstrates how to use different view types within a single `RecyclerView`.
+- **[Dynamic](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/dynamic)**: a more advanced implementation demonstrating how to update the adapter's content (add, remove & reorder operations). Additionally provides a primitive implementation of click handling.
+- **Advanced**: TODO
+
 License
 ----
 Apache 2.0

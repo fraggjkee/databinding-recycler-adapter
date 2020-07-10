@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.fraggjkee.databindingadapter.databinding.ActivityMainBinding
 import com.fraggjkee.databindingadapter.dynamic.DynamicActivity
 import com.fraggjkee.databindingadapter.simple.SimpleActivity
+import com.fraggjkee.databindingadapter.simple_multitype.SimpleMultitypeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onSimpleMultiTypeBtnClick() {
-        Toast.makeText(this, "TODO", Toast.LENGTH_LONG).show()
+        startActivity(
+            Intent(this, SimpleMultitypeActivity::class.java)
+        )
     }
 
     fun onDynamicBtnClick() {

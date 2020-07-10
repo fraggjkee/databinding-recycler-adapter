@@ -19,6 +19,8 @@
 
         <activity android:name=".simple.SimpleActivity" />
 
+        <activity android:name=".simple_multitype.SimpleMultitypeActivity" />
+
         <activity android:name=".dynamic.DynamicActivity" />
 
     </application>

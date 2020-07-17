@@ -4,6 +4,8 @@ A simple universal `RecyclerView.Adapter` based on Android's DataBinding. Create
 - [RecyclerView 2020: a modern way of dealing with lists in Android using DataBinding — Part 2](https://medium.com/@fraggjkee/recyclerview-2020-a-modern-way-of-dealing-with-lists-in-android-using-databinding-part-2-df69f0a741f8)
 
 # Installation
+**Step 0.** Make sure that your project is [DataBinding-ready](https://developer.android.com/topic/libraries/data-binding/start). Double check that `kotlin-kapt` plugin is [applied](https://stackoverflow.com/a/54197326/984014) to the target module.
+ 
 **Step 1.** Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {

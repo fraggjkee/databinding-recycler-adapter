@@ -1,9 +1,11 @@
 package com.fraggjkee.databindingadapter.dynamic
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.observe
 import com.fraggjkee.databindingadapter.R
 import com.fraggjkee.databindingadapter.databinding.ActivityDynamicBinding
 
@@ -13,7 +15,7 @@ import com.fraggjkee.databindingadapter.databinding.ActivityDynamicBinding
  * - adding new items to the dataset
  * - removing items from the dataset
  * - dataset reordering
- * - primitive click handling (based on lambdas)
+ * - basic click handling (based on lambdas)
  */
 class DynamicActivity : AppCompatActivity() {
 
@@ -26,6 +28,10 @@ class DynamicActivity : AppCompatActivity() {
         binding.let {
             it.lifecycleOwner = this
             it.viewModel = this.viewModel
+        }
+
+        viewModel.toastMessage.observe(this) { message ->
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         }
     }
 }

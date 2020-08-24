@@ -14,6 +14,11 @@ class DynamicViewModel : ViewModel() {
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
 
+    // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
+    // better for one-time event streams.
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> = _toastMessage
+
     init {
         _recyclerItems.value = loadUsers()
             .map { createUserItemViewModel(it) }
@@ -22,8 +27,15 @@ class DynamicViewModel : ViewModel() {
 
     private fun createUserItemViewModel(user: User): UserItemViewModel {
         return UserItemViewModel(user).apply {
+            itemClickHandler = { user -> showClickMessage(user) }
             deleteBtnClickHandler = { user -> deleteUser(user) }
         }
+    }
+
+    private fun showClickMessage(user: User) {
+        _toastMessage.postValue(
+            "${user.firstName} ${user.lastName} is clicked"
+        )
     }
 
     private fun deleteUser(user: User) {
@@ -42,11 +54,7 @@ class DynamicViewModel : ViewModel() {
 
         fun generateNewUser(): User {
             val id = recyclerItems.value.orEmpty().size.inc()
-            return User(
-                id = id.toLong(),
-                firstName = "First Name #$id",
-                lastName = "Last Name #$id"
-            )
+            return User(id.toLong(), "First Name #$id", "Last Name #$id")
         }
 
         val user = generateNewUser()

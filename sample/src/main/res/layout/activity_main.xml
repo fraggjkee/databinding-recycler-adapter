@@ -36,7 +36,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> activity.onDynamicBtnClick()}"
-                android:text="Dynamic" />
+                android:text="Dynamic List" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> activity.onDynamicItemsBtnClick()}"
+                android:text="Dynamic Items" />
 
             <Button
                 android:layout_width="match_parent"

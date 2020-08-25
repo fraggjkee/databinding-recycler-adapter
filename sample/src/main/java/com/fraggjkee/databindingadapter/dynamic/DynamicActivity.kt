@@ -16,6 +16,11 @@ import com.fraggjkee.databindingadapter.databinding.ActivityDynamicBinding
  * - removing items from the dataset
  * - dataset reordering
  * - basic click handling (based on lambdas)
+ *
+ * This sample demonstrates how to perform global list-level operations like adding or removing
+ * new items. Refer to the sample in [com.fraggjkee.databindingadapter.dynamic_items] package
+ * if you're interested updating individual items without touching the adapter and it's underlying
+ * dataset.
  */
 class DynamicActivity : AppCompatActivity() {
 

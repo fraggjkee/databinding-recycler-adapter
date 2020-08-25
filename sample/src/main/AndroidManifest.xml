@@ -23,6 +23,8 @@
 
         <activity android:name=".dynamic.DynamicActivity" />
 
+        <activity android:name=".dynamic_items.DynamicItemsActivity" />
+
     </application>
 
 </manifest>

@@ -35,11 +35,14 @@ dependencies {
 
 **A**: Refer to the [Dynamic List](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/dynamic) and [Dynamic Items](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/dynamic_items) samples.
 
+
 **Q: How can I add, remove or reorder elements of the adapter?**
+
 **A:** Refer to the [Dynamic List](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/dynamic) sample.
 
 
 **Q: How can I update content within individual cells without updating the entire adapter's dataset?**
+
 **A:** Refer to the [Dynamic Items](https://github.com/fraggjkee/databinding-recycler-adapter/tree/master/sample/src/main/java/com/fraggjkee/databindingadapter/dynamic-items) sample.
 
 License
